@@ -1,9 +1,9 @@
-import 'package:dashboard_reborn/utils/colors.dart';
-import 'package:dashboard_reborn/utils/page_transformer.dart';
-import 'package:dashboard_reborn/utils/text_styles.dart';
-import 'package:dashboard_reborn/utils/ui_helpers.dart';
-import 'package:dashboard_reborn/widgets/parallax_cards.dart';
-import 'package:dashboard_reborn/widgets/swiping_cards.dart';
+import 'package:Raffs_App/utils/colors.dart';
+import 'package:Raffs_App/utils/page_transformer.dart';
+import 'package:Raffs_App/utils/text_styles.dart';
+import 'package:Raffs_App/utils/ui_helpers.dart';
+import 'package:Raffs_App/widgets/parallax_cards.dart';
+import 'package:Raffs_App/widgets/swiping_cards.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -92,13 +92,14 @@ class _MyGradientsPageState extends State<MyGradientsPage> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              //gradient colors change according to set theme
-              colors: isThemeCurrentlyDark(context)
-                  ? [GradientColors.darkStart, GradientColors.darkEnd]
-                  : [GradientColors.lightStart, GradientColors.lightEnd],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              tileMode: TileMode.clamp),
+            //gradient colors change according to set theme
+            // colors: isThemeCurrentlyDark(context)
+            //     ? [GradientColors.darkStart, GradientColors.darkEnd]
+            //     : [GradientColors.lightStart, GradientColors.lightEnd],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            // tileMode: TileMode.clamp
+          ),
         ),
         child: SingleChildScrollView(
           child: Column(

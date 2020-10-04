@@ -1,8 +1,8 @@
-import 'package:dashboard_reborn/pages/home_page.dart';
-import 'package:dashboard_reborn/utils/colors.dart';
-import 'package:dashboard_reborn/utils/text_styles.dart';
-import 'package:dashboard_reborn/utils/ui_helpers.dart';
-import 'package:dashboard_reborn/widgets/sexy_tile.dart';
+import 'package:Raffs_App/pages/home_page.dart';
+import 'package:Raffs_App/utils/colors.dart';
+import 'package:Raffs_App/utils/text_styles.dart';
+import 'package:Raffs_App/utils/ui_helpers.dart';
+import 'package:Raffs_App/widgets/sexy_tile.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +14,9 @@ class MyNotePage extends StatefulWidget {
 
 class _MyNotePageState extends State<MyNotePage> {
   List<String> itemContent = [
-    'Note: this app does nothing.',
-    'Yep, you read that right! It\'s only meant to serve as a UI template for Flutter developers to use in their own apps.\n\nThe entire source code is freely available on GitHub, so you can tweak it and use it as per your liking.\n\nEnjoy, and don\'t forget to star the project on GitHub. It really helps me out!\n\n- Urmil Shroff',
+    'Hey You- Welcome to my app.',
+    'This is a Beta version. Updates are on the way! \nAlso: I wont be using '
+        'any data collected from you in any malicious ways.',
   ]; //the text in the tile
 
   @override

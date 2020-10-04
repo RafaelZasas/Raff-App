@@ -1,7 +1,7 @@
-import 'package:dashboard_reborn/utils/colors.dart';
-import 'package:dashboard_reborn/utils/text_styles.dart';
-import 'package:dashboard_reborn/utils/ui_helpers.dart';
-import 'package:dashboard_reborn/widgets/sexy_tile.dart';
+import 'package:Raffs_App/utils/colors.dart';
+import 'package:Raffs_App/utils/text_styles.dart';
+import 'package:Raffs_App/utils/ui_helpers.dart';
+import 'package:Raffs_App/widgets/sexy_tile.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +14,8 @@ class MyAboutPage extends StatefulWidget {
 class _MyAboutPageState extends State<MyAboutPage> {
   List<String> itemContent = [
     'What is this app about?',
-    'Dashboard Reborn is a showcase of beautiful UI elements written purely in Dart code.\n\nThe entire project is open source, and you can use the code however you want in your own apps.\n\nThat said, if you liked this app or found it helpful, please fork/star it on GitHub and give me a shoutout. Pull requests are more than welcome too.\n\nThanks!',
-    'Credits',
+    'This is a personal resume app built to showcase my app making capabilities using Flutter.',
+    'Credits:',
     'This app would not have been possible without the Flutter framework, the open source projects that I\'ve used and the tireless efforts of developers and contributors in the Flutter community. \n\nPlease see the README.md file in the repository below for more details.',
   ]; //the text in the tile
 
@@ -69,12 +69,12 @@ class _MyAboutPageState extends State<MyAboutPage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Container(
-                              width: 70.0,
-                              height: 70.0,
+                              width: 150.0,
+                              height: 150.0,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
-                                  image: AssetImage('assets/credits/urmil.png'),
+                                  image: AssetImage('assets/credits/raff.jpg'),
                                 ),
                               ),
                             ),
@@ -122,7 +122,7 @@ class _MyAboutPageState extends State<MyAboutPage> {
                               height: 10.0,
                             ),
                             Text(
-                              'Urmil Shroff',
+                              'Rafael Zasas',
                               style: isThemeCurrentlyDark(context)
                                   ? LabelStyles.white
                                   : LabelStyles.black,
@@ -141,7 +141,7 @@ class _MyAboutPageState extends State<MyAboutPage> {
                                     size: 24.0,
                                   ),
                                   onPressed: () =>
-                                      launchURL('https://urmilshroff.tech/'),
+                                      launchURL('https://rafaelzasas.com/'),
                                 ),
                                 IconButton(
                                   icon: Icon(
@@ -150,7 +150,7 @@ class _MyAboutPageState extends State<MyAboutPage> {
                                     size: 26.0,
                                   ),
                                   onPressed: () => launchURL(
-                                      'https://twitter.com/urmilshroff'),
+                                      'https://twitter.com/rafaelzasas'),
                                 ),
                               ],
                             ),
@@ -242,8 +242,7 @@ class _MyAboutPageState extends State<MyAboutPage> {
         foregroundColor: invertInvertColorsStrong(context),
         backgroundColor: invertColorsStrong(context),
         elevation: 5.0,
-        onPressed: () =>
-            launchURL('https://github.com/urmilshroff/dashboard_reborn'),
+        onPressed: () => launchURL('https://github.com/rafaelzasas/raff-app'),
       ),
     );
   }

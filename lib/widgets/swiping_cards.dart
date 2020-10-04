@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:dashboard_reborn/pages/gradients_page.dart';
-import 'package:dashboard_reborn/utils/text_styles.dart';
-import 'package:dashboard_reborn/utils/ui_helpers.dart';
+import 'package:Raffs_App/pages/gradients_page.dart';
+import 'package:Raffs_App/utils/text_styles.dart';
+import 'package:Raffs_App/utils/ui_helpers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';

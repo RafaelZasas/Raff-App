@@ -1,10 +1,10 @@
 import 'dart:ui';
 
-import 'package:dashboard_reborn/pages/liquid_page.dart';
-import 'package:dashboard_reborn/utils/colors.dart';
-import 'package:dashboard_reborn/utils/text_styles.dart';
-import 'package:dashboard_reborn/utils/ui_helpers.dart';
-import 'package:dashboard_reborn/widgets/sexy_bottom_sheet.dart';
+import 'package:Raffs_App/pages/liquid_page.dart';
+import 'package:Raffs_App/utils/colors.dart';
+import 'package:Raffs_App/utils/text_styles.dart';
+import 'package:Raffs_App/utils/ui_helpers.dart';
+import 'package:Raffs_App/widgets/sexy_bottom_sheet.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';

@@ -1,5 +1,5 @@
-import 'package:dashboard_reborn/pages/note_page.dart';
-import 'package:dashboard_reborn/utils/colors.dart';
+import 'package:Raffs_App/pages/note_page.dart';
+import 'package:Raffs_App/utils/colors.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 

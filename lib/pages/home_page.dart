@@ -1,14 +1,16 @@
-import 'package:dashboard_reborn/pages/about_page.dart';
-import 'package:dashboard_reborn/pages/gradients_page.dart';
-import 'package:dashboard_reborn/pages/material_page.dart';
-import 'package:dashboard_reborn/utils/colors.dart';
-import 'package:dashboard_reborn/utils/text_styles.dart';
-import 'package:dashboard_reborn/utils/ui_helpers.dart';
-import 'package:dashboard_reborn/widgets/sexy_tile.dart';
+import 'package:Raffs_App/pages/about_page.dart';
+import 'package:Raffs_App/pages/password-generator_page.dart';
+import 'package:Raffs_App/pages/resume_page.dart';
+import 'package:Raffs_App/utils/colors.dart';
+import 'package:Raffs_App/utils/text_styles.dart';
+import 'package:Raffs_App/utils/ui_helpers.dart';
+import 'package:Raffs_App/widgets/sexy_tile.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/ui_helpers.dart';
 
 //this page is based on https://github.com/Ivaskuu/dashboard
 
@@ -21,9 +23,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     List<String> itemNames = [
-      'Material++',
-      'Gradient Cards',
+      'Paassword Generator App',
+      'Tiles Calculator App',
+      'Website',
       'About',
+      'Resume'
     ]; //name of each individual tile
 
     return Scaffold(
@@ -42,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'Dashboard Reborn',
+                    'My Apps and Info',
                     style: isThemeCurrentlyDark(context)
                         ? TitleStylesDefault.white
                         : TitleStylesDefault.black,
@@ -100,10 +104,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                   CupertinoPageRoute(
                                     builder: (context) {
                                       if (index == 0) {
-                                        return MyMaterialPage();
+                                        // password generator
+                                        return MyPasswordGenPage();
                                       } else if (index == 1) {
-                                        return MyGradientsPage();
+                                        // resume page
+                                        return MyResumePage();
                                       } else if (index == 2) {
+                                        // website
+                                        launchURL('https://rafaelzasas.com');
+                                        return MyHomePage();
+                                      } else if (index == 3) {
+                                        // about page
                                         return MyAboutPage();
                                       } else {
                                         return null;
@@ -134,7 +145,8 @@ class _MyHomePageState extends State<MyHomePage> {
             : Icon(
                 EvaIcons.moon,
                 size: 26.0,
-              ), //show moon icon when in light mode
+              ),
+        //show moon icon when in light mode
         tooltip: isThemeCurrentlyDark(context)
             ? 'Switch to light mode'
             : 'Switch to dark mode',

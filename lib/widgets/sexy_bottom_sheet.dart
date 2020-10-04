@@ -1,9 +1,9 @@
 import 'dart:math' as math;
 import 'dart:ui';
 
-import 'package:dashboard_reborn/utils/text_styles.dart';
-import 'package:dashboard_reborn/utils/ui_helpers.dart';
-import 'package:dashboard_reborn/widgets/sexy_tile.dart';
+import 'package:Raffs_App/utils/text_styles.dart';
+import 'package:Raffs_App/utils/ui_helpers.dart';
+import 'package:Raffs_App/widgets/sexy_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -56,7 +56,7 @@ class _SexyBottomSheetState extends State<SexyBottomSheet>
   void initState() {
     super.initState();
     controller = AnimationController(
-      vsync: this,
+      // vsync: this,
       duration: Duration(milliseconds: 500),
     );
   }
