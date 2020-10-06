@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "375732548823",
+    "firebase_url": "https://rafael-zasas.firebaseio.com",
+    "project_id": "rafael-zasas",
+    "storage_bucket": "rafael-zasas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375732548823:android:38b41ee0bcfdd2b5cfac92",
+        "android_client_info": {
+          "package_name": "com.rafaelzasas.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375732548823-diqitavpnjahpk3g7852pnpgcpj524mg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rafaelzasas.app",
+            "certificate_hash": "3b829cbaa0ddcd06da5990eb2e4dfbcf1746ba3f"
+          }
+        },
+        {
+          "client_id": "375732548823-uqt0p6q4fbcgsjbsbl7uu6o61pofdadd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3EudNgt69W7wi232XMT3Mvjp_8J5EVYg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375732548823-uqt0p6q4fbcgsjbsbl7uu6o61pofdadd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

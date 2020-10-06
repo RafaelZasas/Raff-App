@@ -25,10 +25,29 @@ class _MyPasswordGenPageState extends State<MyPasswordGenPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'Still under construction!',
+                    'Generate a random password!',
                     style: isThemeCurrentlyDark(context)
                         ? TitleStylesDefault.white
                         : TitleStylesDefault.black,
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(
+                top: 60.0,
+                bottom: 10.0,
+                left: 10,
+                right: 15,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Password Length',
+                    style: isThemeCurrentlyDark(context)
+                        ? TextStyle(color: Colors.white, fontSize: 20)
+                        : TextStyle(color: Colors.black, fontSize: 20),
                   ),
                 ],
               ),

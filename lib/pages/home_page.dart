@@ -23,7 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     List<String> itemNames = [
-      'Paassword Generator App',
+      'Password Generator App',
       'Tiles Calculator App',
       'Website',
       'About',
@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 bottom: 10.0,
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start, //moves text to left
                 children: <Widget>[
                   Text(
                     'My Apps and Info',
@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         // password generator
                                         return MyPasswordGenPage();
                                       } else if (index == 1) {
-                                        // resume page
+                                        // tiles calculator
                                         return MyResumePage();
                                       } else if (index == 2) {
                                         // website
@@ -116,6 +116,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                       } else if (index == 3) {
                                         // about page
                                         return MyAboutPage();
+                                      } else if (index == 4) {
+                                        // resume page
+                                        return MyResumePage();
                                       } else {
                                         return null;
                                       }

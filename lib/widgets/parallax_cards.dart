@@ -1,4 +1,5 @@
 import 'package:Raffs_App/pages/gradients_page.dart';
+import 'package:Raffs_App/utils/colors.dart';
 import 'package:Raffs_App/utils/page_transformer.dart';
 import 'package:Raffs_App/utils/text_styles.dart';
 import 'package:Raffs_App/utils/ui_helpers.dart';
@@ -100,10 +101,10 @@ class ParallaxCards extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          // colors: [
-          //   Colors.transparent,
-          //   MyColors.black,
-          // ],
+          colors: [
+            Colors.transparent,
+            MyColors.black,
+          ],
         ),
       ),
     );

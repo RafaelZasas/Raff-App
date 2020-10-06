@@ -56,7 +56,7 @@ class _SexyBottomSheetState extends State<SexyBottomSheet>
   void initState() {
     super.initState();
     controller = AnimationController(
-      // vsync: this,
+      vsync: this,
       duration: Duration(milliseconds: 500),
     );
   }
