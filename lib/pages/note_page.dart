@@ -14,7 +14,7 @@ class MyNotePage extends StatefulWidget {
 
 class _MyNotePageState extends State<MyNotePage> {
   List<String> itemContent = [
-    'Hey You - Welcome to my app!',
+    'Hey You\nWelcome to my app!',
     'This is a Beta version. Updates are on the way! \nAlso: I won\'t be using '
         'any data collected from you in any malicious ways.',
   ]; //the text in the tile

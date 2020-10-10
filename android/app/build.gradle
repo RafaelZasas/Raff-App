@@ -98,3 +98,4 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'  // Google Services plugin
+apply plugin: 'com.google.firebase.crashlytics'

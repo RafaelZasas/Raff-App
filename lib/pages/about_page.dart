@@ -5,6 +5,7 @@ import 'package:Raffs_App/widgets/sexy_tile.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MyAboutPage extends StatefulWidget {
   @override
@@ -85,16 +86,8 @@ class _MyAboutPageState extends State<MyAboutPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
-                                Icon(
-                                  EvaIcons.code,
-                                  color: invertColorsMild(context),
-                                  size: 18.0,
-                                ),
-                                SizedBox(
-                                  width: 6.0,
-                                ),
                                 Text(
-                                  'with',
+                                  'Made with',
                                   style: isThemeCurrentlyDark(context)
                                       ? BodyStylesDefault.white
                                       : BodyStylesDefault.black,
@@ -136,12 +129,12 @@ class _MyAboutPageState extends State<MyAboutPage> {
                               children: <Widget>[
                                 IconButton(
                                   icon: Icon(
-                                    EvaIcons.person,
+                                    FontAwesomeIcons.linkedin,
                                     color: invertColorsMild(context),
-                                    size: 24.0,
+                                    size: 22.0,
                                   ),
-                                  onPressed: () =>
-                                      launchURL('https://rafaelzasas.com/'),
+                                  onPressed: () => launchURL(
+                                      'https://www.linkedin.com/in/rafael-zasas/'),
                                 ),
                                 IconButton(
                                   icon: Icon(

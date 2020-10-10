@@ -1,6 +1,7 @@
 import 'package:Raffs_App/pages/about_page.dart';
 import 'package:Raffs_App/pages/password-generator_page.dart';
 import 'package:Raffs_App/pages/resume_page.dart';
+import 'package:Raffs_App/pages/tilesCalculator_page.dart';
 import 'package:Raffs_App/utils/colors.dart';
 import 'package:Raffs_App/utils/text_styles.dart';
 import 'package:Raffs_App/utils/ui_helpers.dart';
@@ -108,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         return MyPasswordGenPage();
                                       } else if (index == 1) {
                                         // tiles calculator
-                                        return MyResumePage();
+                                        return MyTilesCalcPage();
                                       } else if (index == 2) {
                                         // website
                                         launchURL('https://rafaelzasas.com');

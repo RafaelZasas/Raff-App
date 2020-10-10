@@ -1,47 +1,35 @@
-<p align="center"><img height="160px" width="160px" src="./branding/art/icon.png" alt="Dashboard Reborn"/></p>
-
-# Dashboard Reborn✨
-
-[![Stars](https://img.shields.io/github/stars/urmilshroff/dashboard_reborn.svg)](https://github.com/RafaelZasas/Raff-App.git/stargazers)
-[![Forks](https://img.shields.io/github/forks/urmilshroff/dashboard_reborn.svg)](https://github.com/RafaelZasas/Raff-App.git/network/members)
-[![Build](https://github.com/urmilshroff/dashboard_reborn/workflows/Build/badge.svg)](https://github.com/RafaelZasas/Raff-App.git/actions?query=workflow%3ABuild)
-[![Issues](https://img.shields.io/github/issues/urmilshroff/dashboard_reborn.svg)](https://github.com/RafaelZasas/Raff-App.git/issues)
-[![License](https://img.shields.io/github/license/urmilshroff/dashboard_reborn.svg)](https://opensource.org/licenses/MIT)
-
-A very sexy Flutter template-ish app with great focus on UI, design and animations. It is written entirely in Dart and built with Flutter, so it can be compiled to run (very smoothly) on both Android and iOS!
-
-Note: I am _not_ a UI designer by any means. All the animations, colors, layouts, etc. have been made according to what I thought looked "nice and cool", so forgive me for not really following the rules of design.
-
-[<img height="75" width="200" src="./branding/other/google-play-badge.png" alt="Play Store"/>](https://play.google.com/store/apps/details?id=tech.urmilshroff.dashboard_reborn)
 
 
-## Building
+# My Resume App ✨
 
-To build and run the app on your device, do the following:
+[![Stars](https://img.shields.io/github/stars/RafaelZasas/Raff-App.svg)](https://github.com/RafaelZasas/Raff-App.git/stargazers)
+[![Forks](https://img.shields.io/github/forks/RafaelZasas/Raff-App.svg)](https://github.com/RafaelZasas/Raff-App.git/network/members)
+[![Build](https://github.com/RafaelZasas/Raff-App/workflows/DartCI/badge.svg)](https://github.com/RafaelZasas/Raff-App.git/)
+[![Issues](https://img.shields.io/github/issues/RafaelZasas/Raff-App.svg)](https://github.com/RafaelZasas/Raff-App.git/issues)
+[![License](https://img.shields.io/github/license/RafaelZasas/Raff-App.svg)](https://opensource.org/licenses/MIT)
+
+I built this app on top of the UI framework [Dashboard Reborn](https://github.com/urmilshroff/dashboard_reborn).
+Subsequent changes to that template have been my own.
+
+## You Can Make Your Own App Too 🚀
+
 
 -   [Install Flutter](https://flutter.dev/docs/get-started/install/) by following the instructions on their website.
--   Fork/clone this repo to your local machine using `git clone https://github.com/urmilshroff/dashboard_reborn.git`.
--   Connect your devices/emulators and run the app using `flutter run --release` in the root of the project directory.
+-   Fork/clone the template repo to your local machine using `git clone https://github.com/urmilshroff/dashboard_reborn.git`.
+-   Download the Dart and Flutter plugins in the IDE of your choosing
+-   Connect your devices/emulators and run the app by clicking the green play button in your IDE
+-   Play around and have fun with it!
 
 Note: you can also run it faster in debug mode using `flutter run`, but the animations will be choppy and performance won't be as expected.
 
-## Usage
 
-There are three main pages in the app:
+## Contributing 👥
 
--   About Page: a clean, neutral cards layout mostly consisting of text.
--   Material++ Page: a lively, heavily animated page consisting of bold Material Design colors and animations.
--   Gradients Page: a beautiful paginated cards layout complete with a colorful gradients theme.
+Found any bugs? Have any suggestions or code improvements? [Submit an issue](https://github.com/RafaelZasas/Raff-App) or fork and send a [pull request](https://github.com/RafaelZasas/Raff-App/pulls) with your changes. All contributions are more than welcome, and will be merged into `develop` if satisfactory.
 
-You can use these individual components or all of them together as a template or starting point in your own Flutter app. It's completely free - as in beer and speech!
+## Credits 🌱
 
-That said, if you liked this project and found it helpful, kindly fork/star this repo to show your support, and check out some of my [other projects](https://github.com/urmilshroff?tab=repositories). It really helps!😁
-
-## Contributing
-
-Found any bugs? Have any suggestions or code improvements? [Submit an issue](https://github.com/urmilshroff/dashboard_reborn/issues) or fork and send a [pull request](https://github.com/urmilshroff/dashboard_reborn/pulls) with your changes. All contributions are more than welcome, and will be merged into `master` if satisfactory.
-
-## Credits
+### From: [urmilshroff](https://github.com/urmilshroff/)
 
 Huge shoutout to all the amazing libraries and projects that I've used, without which this app wouldn't have been possible:
 
@@ -55,12 +43,18 @@ Huge shoutout to all the amazing libraries and projects that I've used, without 
 -   [Story App UI](https://github.com/devefy/Flutter-Story-App-UI) by devefy
 -   [Page Transformer](https://github.com/roughike/page-transformer) by roughike
 
-Special shoutout to [Arabi Ishaque](https://dribbble.com/Arabi) for making that dope icon!
 
 And of course, the [Flutter framework](https://github.com/flutter/flutter) by Google.
 
-Take a look at the entire list of [contributors](https://github.com/urmilshroff/dashboard_reborn/graphs/contributors) to see who all have helped with the project directly.
+Take a look at the entire list of [contributors](https://github.com/urmilshroff/dashboard_reborn/graphs/contributors) to see who all have helped with the Dashboard Reborn project directly.
 
-## License
+### From: [Me](https://github.com/rafaelzasas/)
+
+Shoutout to the creator of this template, urmilshroff as well as all the wonderful pub developers.
+
+-   [Dashboard Reborn](https://github.com/urmilshroff/dashboard_reborn) by urmilshroff
+-   [native_pdf_view](https://github.com/rbcprolabs/packages.flutter/tree/master/packages/native_pdf_view) by rbcprolabs
+
+## License 📄
 
 This project is licensed under the MIT License - do anything you want with it! See the [LICENSE](LICENSE) file for details.

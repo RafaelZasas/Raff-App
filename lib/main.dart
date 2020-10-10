@@ -6,7 +6,10 @@ import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+
+//this app is based on https://github.com/urmilshroff/dashboard_reborn
 
 FirebaseAnalytics analytics;
 
@@ -15,6 +18,14 @@ Future<void> main() async {
   // future added for async modifier
   await Firebase.initializeApp();
   analytics = FirebaseAnalytics();
+  FirebaseCrashlytics.instance.setCustomKey('str_key', 'hello');
+  FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FirebaseCrashlytics.instance.recordFlutterError(details);
+  };
+  FirebaseCrashlytics.instance.setCustomKey('str_key', 'hello');
+
   runApp(MyApp());
 }
 
@@ -37,7 +48,7 @@ class MyApp extends StatelessWidget {
       ),
       themedWidgetBuilder: (context, theme) {
         return MaterialApp(
-          title: 'Dashboard Reborn',
+          title: 'Raff\s App',
           theme: theme,
           home: MyNotePage(),
         );
