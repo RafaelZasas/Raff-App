@@ -3,9 +3,12 @@ import 'package:Raffs_App/utils/ui_helpers.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:toggle_switch/toggle_switch.dart';
+
+final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
 class MyPasswordGenPage extends StatefulWidget {
   @override
@@ -16,10 +19,13 @@ class _MyPasswordGenPageState extends State<MyPasswordGenPage> {
   String password;
 
   bool isLoading = false; // var to store loading state
+  bool useSymbols;
+  int passwordLength = 10;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: invertInvertColorsStrong(context),
       body: Container(
         child: Column(
@@ -87,16 +93,21 @@ class _MyPasswordGenPageState extends State<MyPasswordGenPage> {
                 left: 10,
                 right: 15,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Password Length:',
-                    style: isThemeCurrentlyDark(context)
-                        ? TextStyle(color: Colors.white, fontSize: 20)
-                        : TextStyle(color: Colors.black, fontSize: 20),
-                  ),
-                ],
+              child: TextFormField(
+                //todo: fix overflow issue
+
+                // allow only digits to be entered
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                decoration: InputDecoration(
+                  labelText: "Enter Password Length",
+                  labelStyle: isThemeCurrentlyDark(context)
+                      ? TextStyle(color: Colors.white, fontSize: 20)
+                      : TextStyle(color: Colors.black, fontSize: 20),
+                ),
+                onChanged: (String len) {
+                  // updates as user types
+                  passwordLength = int.tryParse(len);
+                },
               ),
             ),
             Container(
@@ -127,8 +138,9 @@ class _MyPasswordGenPageState extends State<MyPasswordGenPage> {
                       inactiveFgColor: Colors.white,
                       labels: ['YES', 'NO'],
                       icons: [FontAwesomeIcons.check, FontAwesomeIcons.times],
-                      onToggle: (index) {
+                      onToggle: (index) async {
                         print('switched to: $index');
+                        index == 0 ? useSymbols = true : useSymbols = false;
                       },
                     ),
                   ),
@@ -160,32 +172,63 @@ class _MyPasswordGenPageState extends State<MyPasswordGenPage> {
                                 ? Colors.lightBlueAccent
                                 // background color lightBlueAccent
                                 : Colors.black26, // background color black
+
+                            // button click for password generation
                             onPressed: () async {
                               setState(() {
-                                isLoading = true; // display indicator
+                                isLoading = true; // show loading indicator
                               });
-                              // call cloud function & use set state to store pw
-                              await getPassword().then((String result) {
-                                setState(() {
-                                  password = result;
-                                  isLoading = false; // set loading indicator
+
+                              // define callable cloud function instance
+                              final HttpsCallable callable = CloudFunctions
+                                  .instance
+                                  .getHttpsCallable(
+                                      functionName: 'getRandomPassword')
+                                    ..timeout = const Duration(seconds: 30);
+
+                              try {
+                                // allow for exception handling
+
+                                dynamic result =
+                                    await callable.call(<String, dynamic>{
+                                  'pwLength': passwordLength,
+                                  'useSymbols': useSymbols,
+                                  //await the result before continue
                                 });
-                              });
+
+                                setState(() {
+                                  // update the values post click
+                                  // convert hashmap to list and get first val
+                                  password = result.data.values.toList()[0];
+                                  isLoading = false; // remove loading indicator
+                                  useSymbols = true; // due to the toggle reset
+                                });
+                              } on CloudFunctionsException catch (e) {
+                                print('caught firebase functions exception');
+                                print(
+                                    'Code: ${e.code}\nmessage: ${e.message}\ndetails: ${e.details}');
+                              } catch (e) {
+                                print('caught generic exception');
+                                print(e);
+                              }
+
                               showDialog(
                                   context: context,
-                                  builder: (context) => DisplayPassword());
+                                  builder: (context) =>
+                                      DisplayPassword(password));
                             },
                           ),
                         ],
                       )
                     ],
                   ),
-                  isLoading
+                  isLoading // is the sys waiting for the password?
                       ? SpinKitCircle(
+                          // if so display loading indicator
                           color: Colors.lightBlue,
                           size: 50,
                         )
-                      : Container(),
+                      : Container(), // if not display nothing
                 ],
               ),
             ),
@@ -196,45 +239,37 @@ class _MyPasswordGenPageState extends State<MyPasswordGenPage> {
   }
 }
 
-Future<String> getPassword() async {
-  var pw;
-  final HttpsCallable callable = new CloudFunctions()
-      .getHttpsCallable(functionName: 'getRandomPassword')
-        ..timeout = const Duration(seconds: 30);
-
-  try {
-    await callable.call(
-      <String, dynamic>{
-        'pwLength': 10,
-        'useSymbols': true,
-      },
-    ).then((value) {
-      print(value.data);
-      print(value.data.runtimeType);
-      pw = value.data;
-      return pw;
-    });
-  } on CloudFunctionsException catch (e) {
-    print('caught firebase functions exception');
-    print('Code: ${e.code}\nmessage: ${e.message}\ndetails: ${e.details}');
-
-    return '${e.details}';
-  } catch (e) {
-    print('caught generic exception');
-    print(e);
-    return 'caught generic exception\n$e';
-  }
-}
-
 class DisplayPassword extends StatelessWidget {
-  final String pw = (_MyPasswordGenPageState().password == null)
-      ? 'null value error'
-      : _MyPasswordGenPageState().password;
+  var password; // check if null
+  DisplayPassword(this.password); // constructor
 
   @override
   Widget build(BuildContext context) {
+    // make sure null value isn't being passed to alert dialog widget
+    if (password == null) {
+      password = 'null value error';
+    }
+
     return AlertDialog(
-      title: Text(pw),
+      title: Center(child: Text(password)),
+      content: IconButton(
+          onPressed: () {
+            copyPassword();
+            // dismiss alert dialog
+            Navigator.of(context, rootNavigator: true).pop('dialog');
+
+            // place snack bar onto scaffold
+            _scaffoldKey.currentState.showSnackBar(SnackBar(
+              content: Text('Copied'),
+              duration: const Duration(seconds: 2),
+            ));
+          },
+          icon: Icon(FontAwesomeIcons.clipboard)),
     );
+  }
+
+  copyPassword() {
+    // save text to clipboard
+    Clipboard.setData(new ClipboardData(text: password));
   }
 }
