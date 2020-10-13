@@ -15,8 +15,8 @@ class MyNotePage extends StatefulWidget {
 class _MyNotePageState extends State<MyNotePage> {
   List<String> itemContent = [
     'Hey You\nWelcome to my app!',
-    'This is a Beta version. Updates are on the way! \nAlso: I won\'t be using '
-        'any data collected from you in any malicious ways.',
+    'This is Beta version 1.1.2(1)- Password Generator Update! \nNote: I won\'t be using '
+        'data collected from you in any malicious ways.',
   ]; //the text in the tile
 
   @override
@@ -37,9 +37,7 @@ class _MyNotePageState extends State<MyNotePage> {
                 children: <Widget>[
                   Text(
                     'Welcome!',
-                    style: isThemeCurrentlyDark(context)
-                        ? TitleStylesDefault.white
-                        : TitleStylesDefault.black,
+                    style: isThemeCurrentlyDark(context) ? TitleStylesDefault.white : TitleStylesDefault.black,
                   ),
                 ],
               ),
@@ -68,9 +66,7 @@ class _MyNotePageState extends State<MyNotePage> {
                             ),
                             Text(
                               itemContent[1],
-                              style: isThemeCurrentlyDark(context)
-                                  ? BodyStylesDefault.white
-                                  : BodyStylesDefault.black,
+                              style: isThemeCurrentlyDark(context) ? BodyStylesDefault.white : BodyStylesDefault.black,
                               textAlign: TextAlign.left,
                               softWrap: true,
                               overflow: TextOverflow.fade,

@@ -16,23 +16,19 @@ FirebaseAnalytics analytics;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // future added for async modifier
-  await Firebase.initializeApp();
-  analytics = FirebaseAnalytics();
-  FirebaseCrashlytics.instance.setCustomKey('str_key', 'hello');
+  await Firebase.initializeApp(); // initialize firebase
+  analytics = FirebaseAnalytics(); // initialize analytics
   FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
-
   FlutterError.onError = (FlutterErrorDetails details) {
     FirebaseCrashlytics.instance.recordFlutterError(details);
   };
-  FirebaseCrashlytics.instance.setCustomKey('str_key', 'hello');
 
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   static FirebaseAnalytics analytics = FirebaseAnalytics();
-  static FirebaseAnalyticsObserver observer =
-      FirebaseAnalyticsObserver(analytics: analytics);
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
 
   // Create the initialization Future outside of `build`:
 

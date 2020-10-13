@@ -17,6 +17,7 @@ dependencies:
   firebase_analytics: ^5.0.2   # dependency for the FlutterFire plugin for Google Analytics
   cloud_functions: ^0.6.0+1  # dependency for the FlutterFire plugin for Google Cloud Functions
   firebase_crashlytics: ^0.2.1 # dependency for the FlutterFire plugin for crashlytics
+  firebase_performance: ^0.4.0+2 # dependency for the FlutterFire plugin for performance monitoring
 
 
   # ICONS
@@ -35,6 +36,7 @@ dependencies:
 
   # NETWORKING
   http: ^0.12.2
+  url_launcher: any
 
   # EXTERNAL PUB PACKAGES
   native_pdf_view: any # Render PDF natively on the device

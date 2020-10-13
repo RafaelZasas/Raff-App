@@ -2,6 +2,7 @@ import 'package:Raffs_App/utils/text_styles.dart';
 import 'package:Raffs_App/utils/ui_helpers.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:firebase_performance/firebase_performance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -19,8 +20,9 @@ class _MyPasswordGenPageState extends State<MyPasswordGenPage> {
   String password;
 
   bool isLoading = false; // var to store loading state
-  bool useSymbols;
+  bool useSymbols = true;
   int passwordLength = 10;
+  Trace passwordGenTrace = FirebasePerformance.instance.newTrace('password_generation');
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +57,7 @@ class _MyPasswordGenPageState extends State<MyPasswordGenPage> {
                     color: Colors.transparent,
                     child: Text(
                       'Password Generator',
-                      style: isThemeCurrentlyDark(context)
-                          ? TitleStylesDefault.white
-                          : TitleStylesDefault.black,
+                      style: isThemeCurrentlyDark(context) ? TitleStylesDefault.white : TitleStylesDefault.black,
                     ),
                   ),
                 ],
@@ -164,8 +164,7 @@ class _MyPasswordGenPageState extends State<MyPasswordGenPage> {
                               style: isThemeCurrentlyDark(context)
                                   ? TextStyle(color: Colors.black, fontSize: 20)
                                   // text black when background black and button white
-                                  : TextStyle(
-                                      color: Colors.white, fontSize: 20),
+                                  : TextStyle(color: Colors.white, fontSize: 20),
                               // text white when background white and button black
                             ),
                             color: isThemeCurrentlyDark(context)
@@ -175,23 +174,22 @@ class _MyPasswordGenPageState extends State<MyPasswordGenPage> {
 
                             // button click for password generation
                             onPressed: () async {
+                              // trace how long it takes to generate a password
+                              passwordGenTrace.start();
                               setState(() {
                                 isLoading = true; // show loading indicator
                               });
 
                               // define callable cloud function instance
-                              final HttpsCallable callable = CloudFunctions
-                                  .instance
-                                  .getHttpsCallable(
-                                      functionName: 'getRandomPassword')
+                              final HttpsCallable callable = CloudFunctions.instance
+                                  .getHttpsCallable(functionName: 'getRandomPassword')
                                     ..timeout = const Duration(seconds: 30);
 
                               try {
                                 // allow for exception handling
 
-                                dynamic result =
-                                    await callable.call(<String, dynamic>{
-                                  'pwLength': passwordLength,
+                                dynamic result = await callable.call(<String, dynamic>{
+                                  'pwLength': passwordLength.isFinite ? passwordLength : 10,
                                   'useSymbols': useSymbols,
                                   //await the result before continue
                                 });
@@ -205,17 +203,15 @@ class _MyPasswordGenPageState extends State<MyPasswordGenPage> {
                                 });
                               } on CloudFunctionsException catch (e) {
                                 print('caught firebase functions exception');
-                                print(
-                                    'Code: ${e.code}\nmessage: ${e.message}\ndetails: ${e.details}');
+                                print('Code: ${e.code}\nmessage: ${e.message}\ndetails: ${e.details}');
+                                throw FlutterError('Code: ${e.code}\nmessage: ${e.message}\ndetails: ${e.details}');
                               } catch (e) {
                                 print('caught generic exception');
                                 print(e);
+                                throw FlutterError('Generic Exception: $e');
                               }
-
-                              showDialog(
-                                  context: context,
-                                  builder: (context) =>
-                                      DisplayPassword(password));
+                              passwordGenTrace.stop(); // stop tracing pw gen
+                              showDialog(context: context, builder: (context) => DisplayPassword(password));
                             },
                           ),
                         ],
